@@ -33,10 +33,8 @@ let totalEgresos = ()=>{
 let cargarCabecero = () =>{
 
     let presupuestoTotal=totalIngresos()-totalEgresos();
-    let porcentajeEgreso=totalEgresos()/totalIngresos();
-   
+      
     document.getElementById("presupuesto").innerHTML=formatoMoneda(presupuestoTotal);        
-    document.getElementById("porcentaje").innerHTML=formatoPorcentaje(porcentajeEgreso);
     document.getElementById("ingresos").innerHTML=formatoMoneda(totalIngresos());
     document.getElementById("egresos").innerHTML=formatoMoneda(totalEgresos());
 
@@ -46,11 +44,6 @@ const formatoMoneda = (valor)=>{
     
    return valor.toLocaleString("es-AR", {style:"currency", currency:"ARS", minimumFractionDigits:2});
     
-}
-
-const formatoPorcentaje=(valor)=>{
-    
-    return valor.toLocaleString("es-AR", {style:"percent", minimumFractionDigits:2});
 }
 
 const cargarIngresos = ()=>{
@@ -117,7 +110,6 @@ const crearEgresoHTML= (egreso)=>{
                    <div class="elemento_descripcion">${egreso.getDescripcion}</div>
                    <div class="derecha limpiarEstilos">
                        <div class="elemento_valor">- ${formatoMoneda(egreso.getValor)}</div>
-                       <div class="elemento_porcentaje">${formatoPorcentaje(egreso.getValor/totalEgresos())}</div>
                        <div class="elemento_eliminar">
                            <button class="elemento_eliminar--btn">
                             <ion-icon name="close-circle-outline"
